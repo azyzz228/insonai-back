@@ -215,3 +215,5 @@ USE_X_FORWARDED_HOST = True
 SPEECH_KEY = os.environ.get("SPEECH_KEY")
 SPEECH_REGION = os.environ.get("SPEECH_REGION")
 TOGETHER_KEY = os.environ.get("TOGETHER_KEY")
+SPEECH_KEY_STT = os.environ.get("SPEECH_KEY_STT")
+SPEECH_REGION_STT = os.environ.get("SPEECH_REGION_STT")
