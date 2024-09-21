@@ -14,7 +14,7 @@ class LLMUseCasesSerializer(serializers.ModelSerializer):
             "company_name",
             "industry_name",
             "function",
-            "agentRole",
+            "agent_role",
             "service",
             "issue",
             "language"
