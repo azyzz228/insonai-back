@@ -3,6 +3,9 @@ from django.db import models
 
         
 class BaseModel(models.Model):
+    """
+    Base model is used to define common fields, which is id and timestamps
+    """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)    
     updated_at = models.DateTimeField(auto_now=True)    
@@ -12,12 +15,18 @@ class BaseModel(models.Model):
     
     
 class Customer(BaseModel):
+    """
+    This model is used to collect breif data about customers
+    """
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
 
         
 class LLMUseCases(BaseModel):
+    """
+    This model is used to determine use cases of companies they are planning to fill information LLM
+    """
     company_name = models.CharField(max_length=50)
     industry_name = models.CharField(max_length=50)
     function = models.CharField(max_length=50)
@@ -29,6 +38,9 @@ class LLMUseCases(BaseModel):
 
 
 class LLMUseCaseSetup(BaseModel):
+    """
+    This model is used to get needed information from uses cases and process to LLM
+    """
     llm_use_case = models.OneToOneField(
         to=LLMUseCases, 
         on_delete=models.CASCADE, 
@@ -38,6 +50,9 @@ class LLMUseCaseSetup(BaseModel):
 
 
 class Conversation(BaseModel):
+    """
+    This model is used to create conversation between customer and LLM
+    """
     llm_use_case = models.ForeignKey(
         to=LLMUseCases,
         on_delete=models.SET_NULL,

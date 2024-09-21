@@ -6,6 +6,9 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
+"""
+URLS of a project
+"""
 
 urlpatterns = [
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),

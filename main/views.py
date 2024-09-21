@@ -1,7 +1,7 @@
+import logging
 import json
 import os
 from django.db import transaction
-from django.forms.models import model_to_dict
 from django.http import FileResponse, Http404
 
 from rest_framework import viewsets, status, views, generics
@@ -10,7 +10,8 @@ from rest_framework.exceptions import ValidationError
 
 from .serializers import (
     TTSSerializer,
-    ConversationSerializer,
+    ConversationDetailSerializer,
+    ConversationCreateSerializer,
     LLMUseCasesSerializer,
 )
 from .models import (
@@ -23,16 +24,29 @@ from main.ai.tts import speech_to_text
 from main.ai.llm import client_speech_text_to_llm
 from main.ai.stt import process_audio_and_send_request
 
+
+logger = logging.getLogger(__name__)
+
+
 class TTSView(views.APIView):
+    """
+    This method is used to start process TTS and STT methods, also uses LLM to process request answers
+    """
     serializer_class = TTSSerializer
     permission_classes = []
     authentication_classes = []
 
     def post(self, request, *args, **kwargs):
         conversation_id = self.kwargs.get("conversation_id")
+        logger.info(
+            f"Processing TTSview for converstion with id: {conversation_id}"
+        )
         try:
             conversation = Conversation.objects.get(pk=conversation_id)
         except Conversation.DoesNotExist:
+            logger.error(
+                f"Converstion with id: {conversation_id} does not exists"
+            )
             raise Http404
         
         try:
@@ -40,28 +54,29 @@ class TTSView(views.APIView):
         except json.JSONDecodeError:
             raise ValidationError(f"Could not load json of messaged in conversation with id:{conversation_id}")
         
-        print("[-] Starting STT")
+        
+        logger.info("Processing STT methods")
+        
         # add client speech to conversation messages, to keep messages history for LLM
         client_audio_text = request.data.get("text")
         client_speech_text = process_audio_and_send_request(client_audio_text)
 
-        print("[+] RESULT")
-        print(client_speech_text)
-        
+        logger.info(f"Processed STT methods, message: {client_speech_text}")  
+              
         messages.append({"role": "user", "content": client_speech_text})
 
         # trigger LLM service
-        print("[-] SENDING TO LLM")
+        logger.info("Processing LLM methods")
         llm_text = client_speech_text_to_llm(messages)
+        logger.info(f"Processed LLM methods, message: {llm_text}")  
+        
         messages.append({"role": "assistant", "content": llm_text})
-
-        print("[+] LLM TEXT RESULT")
-        print(llm_text)
 
         # Serialize the updated list back to a JSON string and update conversation
         conversation.messages = json.dumps(messages)
         conversation.save(update_fields=["messages"])
-
+        
+        logger.info("TTS view successfully finished")  
         
         # create audio from LLM service response text
         filepath = speech_to_text(llm_text)
@@ -98,7 +113,7 @@ class ConversationCreateView(generics.GenericAPIView):
     and its setup data, both rendered into the conversation.
     """
     queryset = Conversation.objects.all()
-    serializer_class = ConversationSerializer
+    serializer_class = ConversationCreateSerializer
     permission_classes = []
     authentication_classes = []
 
@@ -133,6 +148,7 @@ class ConversationCreateView(generics.GenericAPIView):
         try:
             return LLMUseCases.objects.get(pk=llm_use_case_id)
         except LLMUseCases.DoesNotExist:
+            logger.error(f"LLM use case with id: {llm_use_case_id}")
             raise ValidationError("The specified LLM use case does not exist.")
     
     def get_and_populate_setup_data(self, llm_use_case):
@@ -143,6 +159,7 @@ class ConversationCreateView(generics.GenericAPIView):
         try:
             setup_template = LLMUseCaseSetup.objects.get(llm_use_case=llm_use_case)
         except LLMUseCaseSetup.DoesNotExist:
+            logger.error(f"LLM use case setup for use case: {llm_use_case} does not exists")  
             raise ValidationError("LLM use case setup data is missing.")
 
         return setup_template.setup_data
@@ -152,6 +169,8 @@ class ConversationCreateView(generics.GenericAPIView):
         Creates the conversation with the populated setup data 
         and LLM use case data.
         """
+        
+        logger.info("Processing conversation creation")  
         return Conversation.objects.create(
             llm_use_case=llm_use_case,
             messages=json.dumps(
@@ -161,3 +180,13 @@ class ConversationCreateView(generics.GenericAPIView):
             ),
             **validated_data
         )
+        
+
+class ConversationDetailView(generics.RetrieveAPIView):
+    """
+    This method returns converstaion object, used to track history of messages
+    """
+    queryset = Conversation.objects.only("id", "messages")    # only() is used to improve DB request improvement
+    serializer_class = ConversationDetailSerializer
+    authentication_classes = []
+    permission_classes = []

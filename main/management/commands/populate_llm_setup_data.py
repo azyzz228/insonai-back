@@ -6,6 +6,10 @@ class Command(BaseCommand):
     help = 'Insert LLM use cases and their setups into the database'
 
     def handle(self, *args, **kwargs):
+        """
+        This command is used to pre populate data with necessary data for testing
+        """
+        
         # Define your data for LLM use cases
         use_case_data = [
             {

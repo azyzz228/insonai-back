@@ -1,3 +1,4 @@
+import logging
 import base64
 import tempfile
 import os
@@ -5,7 +6,16 @@ import requests
 from django.conf import settings
 
 
+logger = logging.getLogger(__name__)
+
+
 def process_audio_and_send_request(base64_audio):
+    """
+    Main method to transfrom base64 to file, and then use stt module to return text: str
+    """
+    
+    logger.info("Processing TTS methods")
+    
     # Decode base64 audio
     decoded_audio = base64.b64decode(base64_audio)
 
@@ -37,10 +47,13 @@ def process_audio_and_send_request(base64_audio):
 
         # Check response
         if response.status_code == 200:
-            # print(response.json())
+            
             message = response.json()["NBest"][0]["Lexical"]
+            logger.info(f"Successfully processed TTS methods message: {message}")
+
             return message
         else:
+            logger.error("Failed to process TTS methods")
             return {"error": f"Request failed with status code {response.status_code}", "details": response.text}
 
     finally:
