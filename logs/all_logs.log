@@ -1,0 +1,342 @@
+INFO 2024-09-21 18:57:59,839 autoreload 43110 8397451840 Watching for file changes with StatReloader
+WARNING 2024-09-21 18:58:06,177 log 43110 6190723072 Not Found: /
+WARNING 2024-09-21 18:58:06,440 log 43110 6190723072 Not Found: /favicon.ico
+ERROR 2024-09-21 18:58:14,016 log 43110 6190723072 Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/views.py", line 84, in get
+    return self._get_schema_response(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/views.py", line 92, in _get_schema_response
+    data=generator.get_schema(request=request, public=self.serve_public),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/generators.py", line 285, in get_schema
+    paths=self.parse(request, public),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/generators.py", line 256, in parse
+    operation = view.schema.get_operation(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 112, in get_operation
+    operation['responses'] = self._get_response_bodies()
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1374, in _get_response_bodies
+    return {'200': self._get_response_for_code(response_serializers, '200', direction=direction)}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1430, in _get_response_for_code
+    component = self.resolve_serializer(serializer, direction)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1614, in resolve_serializer
+    component.schema = self._map_serializer(serializer, direction, bypass_extensions)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 930, in _map_serializer
+    schema = self._map_basic_serializer(serializer, direction)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1023, in _map_basic_serializer
+    for field in serializer.fields.values():
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `agentRole` is not valid for model `LLMUseCases` in `main.serializers.LLMUseCasesSerializer`.
+ERROR 2024-09-21 18:58:14,074 log 43110 6190723072 Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/views.py", line 84, in get
+    return self._get_schema_response(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/views.py", line 92, in _get_schema_response
+    data=generator.get_schema(request=request, public=self.serve_public),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/generators.py", line 285, in get_schema
+    paths=self.parse(request, public),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/generators.py", line 256, in parse
+    operation = view.schema.get_operation(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 112, in get_operation
+    operation['responses'] = self._get_response_bodies()
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1374, in _get_response_bodies
+    return {'200': self._get_response_for_code(response_serializers, '200', direction=direction)}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1430, in _get_response_for_code
+    component = self.resolve_serializer(serializer, direction)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1614, in resolve_serializer
+    component.schema = self._map_serializer(serializer, direction, bypass_extensions)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 930, in _map_serializer
+    schema = self._map_basic_serializer(serializer, direction)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/drf_spectacular/openapi.py", line 1023, in _map_basic_serializer
+    for field in serializer.fields.values():
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `agentRole` is not valid for model `LLMUseCases` in `main.serializers.LLMUseCasesSerializer`.
+INFO 2024-09-21 18:58:51,150 autoreload 43159 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 19:01:53,780 autoreload 43159 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 19:01:54,196 autoreload 43666 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 19:01:55,763 autoreload 43666 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 19:01:56,063 autoreload 43677 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 19:04:07,797 autoreload 43677 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 19:04:08,161 autoreload 44263 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 19:51:34,040 autoreload 44463 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:34:06,150 autoreload 49829 8397451840 Watching for file changes with StatReloader
+WARNING 2024-09-21 20:39:27,814 log 49829 6195015680 Not Found: /
+INFO 2024-09-21 20:41:22,273 autoreload 49829 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:41:22,680 autoreload 50996 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:42:06,121 autoreload 50996 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:42:06,582 autoreload 51031 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:42:15,300 autoreload 51031 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:42:15,570 autoreload 51040 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:43:37,185 autoreload 51040 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:43:37,621 autoreload 51120 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:44:22,256 autoreload 51120 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:44:22,621 autoreload 51142 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:44:48,816 autoreload 51142 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:44:49,188 autoreload 51173 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:46:36,315 autoreload 51173 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:46:36,732 autoreload 51208 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:46:49,515 autoreload 51208 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:46:49,919 autoreload 51231 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:46:56,566 autoreload 51231 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:46:56,863 autoreload 51247 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:47:02,401 autoreload 51247 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/tts.py changed, reloading.
+INFO 2024-09-21 20:47:02,695 autoreload 51267 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:47:17,435 autoreload 51267 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:47:17,737 autoreload 51285 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:49:03,795 autoreload 51285 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:49:04,181 autoreload 51343 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:49:10,846 autoreload 51343 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:49:11,129 autoreload 51355 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:49:53,530 autoreload 51355 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:49:53,963 autoreload 51380 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:50:13,588 autoreload 51380 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:50:13,832 autoreload 51405 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:50:29,250 autoreload 51405 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:50:29,695 autoreload 51442 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:50:56,965 autoreload 51442 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:50:57,344 autoreload 51468 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:51:11,209 autoreload 51468 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:51:11,556 autoreload 51497 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:51:27,525 autoreload 51497 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:51:27,965 autoreload 51509 8397451840 Watching for file changes with StatReloader
+WARNING 2024-09-21 20:52:35,478 log 51509 6196883456 Not Found: /tts/client_speech_text/375a74dc-e644-49b3-b450-f0291f7fe765/
+ERROR 2024-09-21 20:53:30,689 log 51509 6196883456 Internal Server Error: /tts/client_speech_text/375a74dc-e644-49b3-b450-f0291f7fe765
+Traceback (most recent call last):
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/tts/client_speech_text/375a74dc-e644-49b3-b450-f0291f7fe765/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+WARNING 2024-09-21 20:54:14,073 log 51509 6196883456 Not Found: /tts/client_speech_text/375a74dc-e644-49b3-b450-f0291f7fe765/
+WARNING 2024-09-21 20:54:58,621 log 51509 6213709824 Bad Request: /tts/create_conversation/
+INFO 2024-09-21 20:56:58,178 autoreload 51509 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/stt.py changed, reloading.
+INFO 2024-09-21 20:56:58,594 autoreload 51654 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:57:02,212 autoreload 51654 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/stt.py changed, reloading.
+INFO 2024-09-21 20:57:02,506 autoreload 51671 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:57:03,991 autoreload 51671 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/ai/stt.py changed, reloading.
+INFO 2024-09-21 20:57:04,445 autoreload 51676 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:57:38,809 autoreload 51676 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:57:39,246 autoreload 51709 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:58:00,177 autoreload 51709 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:58:00,547 autoreload 51728 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:58:24,639 autoreload 51728 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:58:25,044 autoreload 51744 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:59:04,595 autoreload 51744 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:59:05,003 autoreload 51756 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 20:59:18,855 autoreload 51756 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 20:59:19,207 autoreload 51771 8397451840 Watching for file changes with StatReloader
+ERROR 2024-09-21 20:59:56,986 log 51771 6127759360 Internal Server Error: /tts/client_speech_text/0beaf627-454d-4c71-af7c-17cbeb66c2f5/
+Traceback (most recent call last):
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/main/views.py", line 45, in post
+    client_speech_text = process_audio_and_send_request(client_speech_text)
+                                                        ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'client_speech_text' where it is not associated with a value
+INFO 2024-09-21 21:00:17,322 autoreload 51771 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 21:00:17,819 autoreload 51790 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 21:00:32,900 _log 51790 6158626816 error_code=None error_message='Input validation error: `inputs` tokens + `max_new_tokens` must be <= 8193. Given: 55551 `inputs` tokens and 252 `max_new_tokens`' error_param=max_tokens error_type=invalid_request_error message='Together API error received' stream_error=False
+ERROR 2024-09-21 21:00:32,953 log 51790 6158626816 Internal Server Error: /tts/client_speech_text/0beaf627-454d-4c71-af7c-17cbeb66c2f5/
+Traceback (most recent call last):
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/main/views.py", line 50, in post
+    llm_text = client_speech_text_to_llm(messages)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/main/ai/llm.py", line 9, in client_speech_text_to_llm
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/resources/chat/completions.py", line 141, in create
+    response, _, _ = requestor.request(
+                     ^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/abstract/api_requestor.py", line 249, in request
+    resp, got_stream = self._interpret_response(result, stream)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/abstract/api_requestor.py", line 632, in _interpret_response
+    self._interpret_response_line(
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/abstract/api_requestor.py", line 701, in _interpret_response_line
+    raise self.handle_error_response(resp, rcode, stream_error=stream)
+together.error.InvalidRequestError: Error code: 400 - {"message": "Input validation error: `inputs` tokens + `max_new_tokens` must be <= 8193. Given: 55551 `inputs` tokens and 252 `max_new_tokens`", "type_": "invalid_request_error", "param": "max_tokens"}
+INFO 2024-09-21 21:01:40,576 autoreload 51790 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 21:01:40,980 autoreload 51816 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 21:01:53,716 autoreload 51816 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 21:01:54,083 autoreload 51836 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 21:02:14,061 autoreload 51836 8397451840 /Users/azyzz/Downloads/inson_ai_backend/main/views.py changed, reloading.
+INFO 2024-09-21 21:02:14,459 autoreload 51850 8397451840 Watching for file changes with StatReloader
+INFO 2024-09-21 21:02:32,134 _log 51850 6167146496 error_code=None error_message='Input validation error: `inputs` tokens + `max_new_tokens` must be <= 8193. Given: 55538 `inputs` tokens and 252 `max_new_tokens`' error_param=max_tokens error_type=invalid_request_error message='Together API error received' stream_error=False
+ERROR 2024-09-21 21:02:32,174 log 51850 6167146496 Internal Server Error: /tts/client_speech_text/0beaf627-454d-4c71-af7c-17cbeb66c2f5/
+Traceback (most recent call last):
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/main/views.py", line 55, in post
+    llm_text = client_speech_text_to_llm(messages)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/main/ai/llm.py", line 9, in client_speech_text_to_llm
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/resources/chat/completions.py", line 141, in create
+    response, _, _ = requestor.request(
+                     ^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/abstract/api_requestor.py", line 249, in request
+    resp, got_stream = self._interpret_response(result, stream)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/abstract/api_requestor.py", line 632, in _interpret_response
+    self._interpret_response_line(
+  File "/Users/azyzz/Downloads/inson_ai_backend/venv/lib/python3.12/site-packages/together/abstract/api_requestor.py", line 701, in _interpret_response_line
+    raise self.handle_error_response(resp, rcode, stream_error=stream)
+together.error.InvalidRequestError: Error code: 400 - {"message": "Input validation error: `inputs` tokens + `max_new_tokens` must be <= 8193. Given: 55538 `inputs` tokens and 252 `max_new_tokens`", "type_": "invalid_request_error", "param": "max_tokens"}

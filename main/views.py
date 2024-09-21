@@ -21,7 +21,7 @@ from .models import (
 
 from main.ai.tts import speech_to_text
 from main.ai.llm import client_speech_text_to_llm
-
+from main.ai.stt import process_audio_and_send_request
 
 class TTSView(views.APIView):
     serializer_class = TTSSerializer
@@ -40,17 +40,23 @@ class TTSView(views.APIView):
         except json.JSONDecodeError:
             raise ValidationError(f"Could not load json of messaged in conversation with id:{conversation_id}")
         
+        print("[-] Starting STT")
         # add client speech to conversation messages, to keep messages history for LLM
         client_speech_text = request.data.get("text")
         messages.append({"role": "user", "content": client_speech_text})
 
         # trigger LLM service
+        print("[-] SENDING TO LLM")
         llm_text = client_speech_text_to_llm(messages)
         messages.append({"role": "assistant", "content": llm_text})
+
+        print("[+] LLM TEXT RESULT")
+        print(llm_text)
 
         # Serialize the updated list back to a JSON string and update conversation
         conversation.messages = json.dumps(messages)
         conversation.save(update_fields=["messages"])
+
         
         # create audio from LLM service response text
         filepath = speech_to_text(llm_text)
