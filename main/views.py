@@ -42,7 +42,12 @@ class TTSView(views.APIView):
         
         print("[-] Starting STT")
         # add client speech to conversation messages, to keep messages history for LLM
-        client_speech_text = request.data.get("text")
+        client_audio_text = request.data.get("text")
+        client_speech_text = process_audio_and_send_request(client_audio_text)
+
+        print("[+] RESULT")
+        print(client_speech_text)
+        
         messages.append({"role": "user", "content": client_speech_text})
 
         # trigger LLM service
