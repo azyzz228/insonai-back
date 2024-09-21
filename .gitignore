@@ -1,3 +1,12 @@
 .env
 .DS_STORE
+
 /venv
+
+__pycache__/
+
+*.pyc
+
+media/
+
+logs/*.log
