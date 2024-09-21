@@ -8,5 +8,3 @@ __pycache__/
 *.pyc
 
 media/
-
-logs/*.log
