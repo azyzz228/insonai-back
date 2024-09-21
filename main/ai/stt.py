@@ -16,8 +16,8 @@ def process_audio_and_send_request(base64_audio):
 
     try:
         # Prepare request parameters
-        speech_region = settings.SPEECH_REGION
-        speech_key = settings.SPEECH_KEY
+        speech_region = settings.SPEECH_REGION_STT
+        speech_key = settings.SPEECH_KEY_STT
 
         url = f"https://{speech_region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1"
 
