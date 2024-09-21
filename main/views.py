@@ -42,11 +42,11 @@ class TTSView(views.APIView):
         
         # add client speech to conversation messages, to keep messages history for LLM
         client_speech_text = request.data.get("text")
-        messages.append({"role": "assistant", "content": client_speech_text})
+        messages.append({"role": "user", "content": client_speech_text})
 
         # trigger LLM service
         llm_text = client_speech_text_to_llm(messages)
-        messages.append({"role": "user", "content": llm_text})
+        messages.append({"role": "assistant", "content": llm_text})
 
         # Serialize the updated list back to a JSON string and update conversation
         conversation.messages = json.dumps(messages)
@@ -104,11 +104,8 @@ class ConversationCreateView(generics.GenericAPIView):
         # Retrieve and populate the setup data
         setup_data = self.get_and_populate_setup_data(llm_use_case)
 
-        # Serialize the use case data
-        llm_use_case_data = model_to_dict(llm_use_case, exclude=["id"])
-
         # Create the conversation with setup and use case data
-        conversation = self.create_conversation(validated_data, llm_use_case, setup_data, llm_use_case_data)
+        conversation = self.create_conversation(validated_data, llm_use_case, setup_data)
 
         if not conversation:
             return Response({"ok": False}, status=status.HTTP_400_BAD_REQUEST)
@@ -139,7 +136,7 @@ class ConversationCreateView(generics.GenericAPIView):
 
         return setup_template.setup_data
 
-    def create_conversation(self, validated_data, llm_use_case, setup_data, llm_use_case_data):
+    def create_conversation(self, validated_data, llm_use_case, setup_data):
         """
         Creates the conversation with the populated setup data 
         and LLM use case data.
